@@ -19,39 +19,17 @@
       .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,0.08); }
 
       /* ── Star rating widget ── */
-      .stars-input { display: flex; gap: 6px; }
-      .stars-input input[type="radio"] { display: none; }
-      .stars-input label {
-        font-size: 2rem;
-        cursor: pointer;
-        color: #334155; /* slate-700 – unselected */
-        transition: color 0.15s, transform 0.1s;
+      .stars-input { display: flex; gap: 4px; }
+      .star-btn {
+        background: none; border: none; padding: 2px;
+        font-size: 2.2rem; line-height: 1;
+        cursor: pointer; color: #334155;
+        transition: color 0.12s, transform 0.1s;
         user-select: none;
-        line-height: 1;
       }
-      /* highlight hovered star and all before it */
-      .stars-input label:hover,
-      .stars-input label:hover ~ label { color: #334155; }
-      .stars-input:has(label:hover) label { color: #fbbf24; }
-      .stars-input:has(label:hover) label ~ label { color: #334155; }
-      /* keep selected state */
-      .stars-input input[type="radio"]:checked ~ label { color: #334155; }
-      .stars-input:not(:has(label:hover)) input[type="radio"]:checked ~ label,
-      .stars-input:not(:has(label:hover)) input[type="radio"]:checked ~ label ~ label { color: #334155; }
-      /* simpler fallback: JS sets data-rating on wrapper */
-      .stars-input[data-rating="1"] label:nth-child(2) { color: #fbbf24; }
-      .stars-input[data-rating="2"] label:nth-child(2),
-      .stars-input[data-rating="2"] label:nth-child(4) { color: #fbbf24; }
-      .stars-input[data-rating="3"] label:nth-child(2),
-      .stars-input[data-rating="3"] label:nth-child(4),
-      .stars-input[data-rating="3"] label:nth-child(6) { color: #fbbf24; }
-      .stars-input[data-rating="4"] label:nth-child(2),
-      .stars-input[data-rating="4"] label:nth-child(4),
-      .stars-input[data-rating="4"] label:nth-child(6),
-      .stars-input[data-rating="4"] label:nth-child(8) { color: #fbbf24; }
-      .stars-input[data-rating="5"] label { color: #fbbf24; }
-
-      .star-filled { color: #fbbf24; }
+      .star-btn:hover  { transform: scale(1.15); }
+      .star-btn.lit    { color: #fbbf24; }
+      .star-btn.hovered{ color: #fcd34d; }
 
       /* review card fade-in */
       @keyframes fadeUp {
@@ -76,6 +54,7 @@
 
   <body class="bg-slate-950 text-slate-100">
 
+    <!-- ── TOP BAR ── -->
     <div class="border-b border-white/10">
       <div class="mx-auto max-w-6xl px-4 py-3 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
         <div class="text-sm text-slate-300">
@@ -89,6 +68,7 @@
       </div>
     </div>
 
+    <!-- ── HEADER ── -->
     <header class="mx-auto max-w-6xl px-4 py-5 flex items-center justify-between">
       <a href="#" class="flex items-center gap-3">
         <div class="h-10 w-10 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center">
@@ -119,6 +99,7 @@
       </div>
     </header>
 
+    <!-- ── HERO ── -->
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 opacity-30">
         <div class="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-emerald-400 blur-3xl"></div>
@@ -174,6 +155,7 @@
       </div>
     </section>
 
+    <!-- ── SERVICES ── -->
     <section id="services" class="mx-auto max-w-6xl px-4 py-14">
       <div class="flex items-end justify-between gap-6 flex-wrap">
         <div>
@@ -219,6 +201,7 @@
       </div>
     </section>
 
+    <!-- ── WHY US ── -->
     <section id="why-us" class="mx-auto max-w-6xl px-4 pb-14">
       <div class="rounded-3xl bg-white/5 border border-white/10 p-8">
         <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Why choose Mess Busters?</h2>
@@ -242,6 +225,7 @@
       </div>
     </section>
 
+    <!-- ── PRICING ── -->
     <section id="pricing" class="mx-auto max-w-6xl px-4 pb-14">
       <div class="flex items-end justify-between gap-6 flex-wrap">
         <div>
@@ -284,14 +268,19 @@
       </div>
     </section>
 
+    <!-- ══════════════════════════════════════════════
+         ── REVIEWS & RATINGS SECTION ──
+    ══════════════════════════════════════════════ -->
     <section id="reviews" class="mx-auto max-w-6xl px-4 pb-14">
       <div class="rounded-3xl bg-white/5 border border-white/10 p-8">
 
+        <!-- Header + average score -->
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <h2 class="text-3xl font-extrabold tracking-tight">Customer Reviews</h2>
             <p class="mt-1 text-slate-300 text-sm">Hear what our clients say — and leave your own review below.</p>
           </div>
+          <!-- Average badge -->
           <div id="avg-badge" class="hidden flex-col items-center justify-center rounded-2xl bg-emerald-500/10 border border-emerald-500/20 px-6 py-4 text-center min-w-[120px]">
             <div id="avg-score" class="text-4xl font-extrabold text-emerald-300">5.0</div>
             <div id="avg-stars" class="text-xl mt-0.5">⭐⭐⭐⭐⭐</div>
@@ -299,19 +288,23 @@
           </div>
         </div>
 
+        <!-- Existing reviews grid -->
         <div id="reviews-grid" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
 
+        <!-- Empty state -->
         <div id="empty-state" class="mt-8 rounded-2xl bg-white/5 border border-white/10 p-8 text-center text-slate-400">
           <div class="text-3xl">🧹</div>
           <p class="mt-2 text-sm">No reviews yet. Be the first to share your experience!</p>
         </div>
 
+        <!-- ── Leave a review form ── -->
         <div class="mt-10 rounded-2xl bg-white/5 border border-white/10 p-6">
           <h3 class="text-xl font-bold">Leave a Review</h3>
           <p class="mt-1 text-sm text-slate-300">Had a cleaning done? We'd love to hear your feedback.</p>
 
           <div class="mt-6 grid gap-4">
 
+            <!-- Name -->
             <div>
               <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider" for="r-name">Your Name</label>
               <input
@@ -321,6 +314,7 @@
               />
             </div>
 
+            <!-- Service used -->
             <div>
               <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider" for="r-service">Service Used</label>
               <select
@@ -334,25 +328,22 @@
               </select>
             </div>
 
+            <!-- Star rating -->
             <div>
               <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Your Rating</label>
               <div class="mt-2">
-                <div class="stars-input" id="star-picker" data-rating="0" role="radiogroup" aria-label="Star rating">
-                  <input type="radio" id="s5" name="rating" value="5" />
-                  <label for="s5" title="5 stars" aria-label="5 stars">★</label>
-                  <input type="radio" id="s4" name="rating" value="4" />
-                  <label for="s4" title="4 stars" aria-label="4 stars">★</label>
-                  <input type="radio" id="s3" name="rating" value="3" />
-                  <label for="s3" title="3 stars" aria-label="3 stars">★</label>
-                  <input type="radio" id="s2" name="rating" value="2" />
-                  <label for="s2" title="2 stars" aria-label="2 stars">★</label>
-                  <input type="radio" id="s1" name="rating" value="1" />
-                  <label for="s1" title="1 star" aria-label="1 star">★</label>
+                <div class="stars-input" id="star-picker" role="radiogroup" aria-label="Star rating">
+                  <button type="button" class="star-btn" data-val="1" aria-label="1 star">★</button>
+                  <button type="button" class="star-btn" data-val="2" aria-label="2 stars">★</button>
+                  <button type="button" class="star-btn" data-val="3" aria-label="3 stars">★</button>
+                  <button type="button" class="star-btn" data-val="4" aria-label="4 stars">★</button>
+                  <button type="button" class="star-btn" data-val="5" aria-label="5 stars">★</button>
                 </div>
                 <p id="star-hint" class="mt-1 text-xs text-slate-500">Click to select a rating</p>
               </div>
             </div>
 
+            <!-- Review text -->
             <div>
               <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider" for="r-text">Your Review</label>
               <textarea
@@ -369,12 +360,16 @@
             >
               Submit Review
             </button>
-            <p class="text-xs text-slate-500 -mt-1">Reviews are saved locally in your browser and visible to everyone who visits this page on the same device.</p>
+            <p class="text-xs text-slate-500 -mt-1">Reviews are saved to our database and visible to all visitors.</p>
           </div>
         </div>
 
       </div>
     </section>
+    <!-- ── END REVIEWS ── -->
+
+
+    <!-- ── CONTACT / BOOKINGS ── -->
     <section id="contact" class="mx-auto max-w-6xl px-4 pb-16">
       <div class="rounded-3xl bg-white/5 border border-white/10 p-8">
         <h2 class="text-3xl font-extrabold tracking-tight">For Bookings</h2>
@@ -422,6 +417,7 @@
       </div>
     </section>
 
+    <!-- Toast notification -->
     <div id="toast">✅ Review submitted — thank you!</div>
 
     <script>
@@ -447,46 +443,52 @@
       }
 
       /* ══════════════════════════════════════════════
-         ── REVIEWS ENGINE (SHEETDB API INTEGRATED) ──
+         ── REVIEWS ENGINE (SheetDB) ──
       ══════════════════════════════════════════════ */
-      const SHEETDB_URL = "https://sheetdb.io/api/v1/uzi6rblq0uv3c";
-      const STAR_LABELS = ["", "😕 Poor", "😐 Fair", "🙂 Good", "😊 Great", "🤩 Excellent!"];
+      const SHEETDB_URL  = "https://sheetdb.io/api/v1/uzi6rblq0uv3c";
+      const STAR_LABELS  = ["", "😕 Poor", "😐 Fair", "🙂 Good", "😊 Great", "🤩 Excellent!"];
 
-      /* ── Star picker (RTL trick: highest value first, reversed with flex-row-reverse via JS) ── */
-      const picker = document.getElementById("star-picker");
-      picker.style.flexDirection = "row-reverse";
-      picker.style.justifyContent = "flex-end";
-
+      /* ── Star picker: buttons 1–5, left-to-right gold fill ── */
+      const picker   = document.getElementById("star-picker");
+      const starBtns = [...picker.querySelectorAll(".star-btn")];
       let selectedRating = 0;
 
-      picker.addEventListener("click", function(e) {
-        const label = e.target.closest("label");
-        if (!label) return;
-        const input = document.getElementById(label.htmlFor);
-        if (!input) return;
-        selectedRating = parseInt(input.value);
-        picker.dataset.rating = selectedRating;
-        document.getElementById("star-hint").textContent = STAR_LABELS[selectedRating] || "";
+      function paintStars(upTo, cls) {
+        starBtns.forEach((btn, i) => {
+          btn.classList.remove("lit", "hovered");
+          if (i < upTo) btn.classList.add(cls);
+        });
+      }
+
+      starBtns.forEach((btn, idx) => {
+        btn.addEventListener("mouseenter", () => paintStars(idx + 1, "hovered"));
+        btn.addEventListener("mouseleave", () => paintStars(selectedRating, "lit"));
+        btn.addEventListener("click", () => {
+          selectedRating = idx + 1;
+          paintStars(selectedRating, "lit");
+          document.getElementById("star-hint").textContent = STAR_LABELS[selectedRating] || "";
+        });
       });
 
       /* ── Render star string ── */
       function starsHtml(n) {
+        n = Math.max(0, Math.min(5, parseInt(n) || 0));
         return "★".repeat(n) + "☆".repeat(5 - n);
       }
 
-      /* ── Render all reviews ── */
+      /* ── Render all reviews from SheetDB ── */
       async function renderReviews() {
-        const grid    = document.getElementById("reviews-grid");
-        const empty   = document.getElementById("empty-state");
-        const badge   = document.getElementById("avg-badge");
-        
+        const grid  = document.getElementById("reviews-grid");
+        const empty = document.getElementById("empty-state");
+        const badge = document.getElementById("avg-badge");
+        grid.innerHTML = `<div class="col-span-full text-center text-slate-400 text-sm py-6 animate-pulse">Loading reviews…</div>`;
+
         try {
-          const response = await fetch(SHEETDB_URL);
-          const reviews = await response.json();
-          
+          const res     = await fetch(SHEETDB_URL);
+          const reviews = await res.json();
           grid.innerHTML = "";
 
-          if (!reviews || reviews.length === 0) {
+          if (!Array.isArray(reviews) || reviews.length === 0) {
             empty.classList.remove("hidden");
             badge.classList.add("hidden");
             return;
@@ -496,40 +498,37 @@
           badge.classList.remove("hidden");
           badge.classList.add("flex");
 
-          // Average calculation safely parsing string inputs
-          const avg = reviews.reduce((s, r) => s + parseInt(r.rating || 0), 0) / reviews.length;
+          const avg = reviews.reduce((s, r) => s + (parseInt(r.rating) || 0), 0) / reviews.length;
           document.getElementById("avg-score").textContent = avg.toFixed(1);
           document.getElementById("avg-stars").textContent = starsHtml(Math.round(avg));
           document.getElementById("avg-count").textContent = `${reviews.length} review${reviews.length !== 1 ? "s" : ""}`;
 
-          // Cards (newest first)
           [...reviews].reverse().forEach((r, i) => {
             const card = document.createElement("div");
             card.className = "review-card rounded-2xl bg-white/5 border border-white/10 p-5 flex flex-col gap-3";
             card.style.animationDelay = `${i * 0.05}s`;
-
-            const ratingVal = parseInt(r.rating || 0);
-            const starColor = ratingVal >= 4 ? "#fbbf24" : ratingVal >= 3 ? "#fb923c" : "#94a3b8";
-
+            const rv = parseInt(r.rating) || 0;
+            const starColor = rv >= 4 ? "#fbbf24" : rv >= 3 ? "#fb923c" : "#94a3b8";
             card.innerHTML = `
               <div class="flex items-start justify-between gap-2">
                 <div>
                   <div class="font-semibold text-white leading-tight">${escHtml(r.name || "Anonymous")}</div>
                   ${r.service ? `<div class="text-xs text-slate-400 mt-0.5">${escHtml(r.service)}</div>` : ""}
                 </div>
-                <div class="text-xl leading-none shrink-0" style="color:${starColor}">${starsHtml(ratingVal)}</div>
+                <div class="text-xl leading-none shrink-0" style="color:${starColor}">${starsHtml(rv)}</div>
               </div>
               ${r.text ? `<p class="text-sm text-slate-300 leading-relaxed">${escHtml(r.text)}</p>` : ""}
-              <div class="text-xs text-slate-500 mt-auto">${r.date || ""}</div>
+              <div class="text-xs text-slate-500 mt-auto">${escHtml(r.date || "")}</div>
             `;
             grid.appendChild(card);
           });
-        } catch (error) {
-          console.error("Error fetching reviews:", error);
+        } catch (err) {
+          grid.innerHTML = `<div class="col-span-full text-center text-slate-400 text-sm py-6">Could not load reviews. Please check your connection.</div>`;
+          console.error("SheetDB fetch error:", err);
         }
       }
 
-      /* ── Submit a review permanently ── */
+      /* ── Submit a review to SheetDB ── */
       async function submitReview() {
         const btn     = document.getElementById("submit-review");
         const name    = document.getElementById("r-name").value.trim();
@@ -537,54 +536,41 @@
         const text    = document.getElementById("r-text").value.trim();
         const rating  = selectedRating;
 
-        if (!name) { alert("Please enter your name."); return; }
-        if (!rating) { alert("Please select a star rating."); return; }
-        if (!text)   { alert("Please write a short review."); return; }
+        if (!name)   { alert("Please enter your name.");        return; }
+        if (!rating) { alert("Please select a star rating.");   return; }
+        if (!text)   { alert("Please write a short review.");   return; }
 
-        // Temporarily disable the submission button to prevent duplication
-        btn.disabled = true;
-        const originalText = btn.textContent;
-        btn.textContent = "Submitting...";
-
-        const newReview = {
-          name,
-          service,
-          text,
-          rating,
-          date: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
-        };
+        btn.disabled    = true;
+        btn.textContent = "Submitting…";
 
         try {
-          const response = await fetch(SHEETDB_URL, {
-            method: "POST",
+          const res = await fetch(SHEETDB_URL, {
+            method:  "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ data: [newReview] })
+            body: JSON.stringify({ data: [{ name, service, rating, text,
+              date: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
+            }] })
           });
 
-          if (response.ok) {
-            // Reset form
-            document.getElementById("r-name").value = "";
+          if (res.ok) {
+            document.getElementById("r-name").value    = "";
             document.getElementById("r-service").value = "";
-            document.getElementById("r-text").value = "";
+            document.getElementById("r-text").value    = "";
             selectedRating = 0;
-            picker.dataset.rating = 0;
+            paintStars(0, "lit");
             document.getElementById("star-hint").textContent = "Click to select a rating";
-            document.querySelectorAll(".stars-input input[type='radio']").forEach(i => i.checked = false);
-
             await renderReviews();
             showToast();
-
-            // Scroll to reviews grid smoothly
             document.getElementById("reviews-grid").scrollIntoView({ behavior: "smooth", block: "nearest" });
           } else {
-            alert("Submission failed. Please check your network and try again.");
+            alert("Submission failed. Please try again.");
           }
-        } catch (error) {
-          console.error("Error submitting review:", error);
-          alert("An error occurred during submission. Please try again later.");
+        } catch (err) {
+          alert("Network error. Please check your connection and try again.");
+          console.error("SheetDB post error:", err);
         } finally {
-          btn.disabled = false;
-          btn.textContent = originalText;
+          btn.disabled    = false;
+          btn.textContent = "Submit Review";
         }
       }
 
@@ -598,7 +584,7 @@
       /* ── HTML escape ── */
       function escHtml(s) {
         if (!s) return "";
-        return s.toString().replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+        return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
       }
 
       /* ── Init ── */
