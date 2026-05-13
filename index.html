@@ -498,7 +498,7 @@
           badge.classList.remove("hidden");
           badge.classList.add("flex");
 
-          const avg = reviews.reduce((s, r) => s + (parseInt(r.rating) || 0), 0) / reviews.length;
+          const avg = reviews.reduce((s, r) => s + (parseInt(r.Rating) || 0), 0) / reviews.length;
           document.getElementById("avg-score").textContent = avg.toFixed(1);
           document.getElementById("avg-stars").textContent = starsHtml(Math.round(avg));
           document.getElementById("avg-count").textContent = `${reviews.length} review${reviews.length !== 1 ? "s" : ""}`;
@@ -507,18 +507,18 @@
             const card = document.createElement("div");
             card.className = "review-card rounded-2xl bg-white/5 border border-white/10 p-5 flex flex-col gap-3";
             card.style.animationDelay = `${i * 0.05}s`;
-            const rv = parseInt(r.rating) || 0;
+            const rv = parseInt(r.Rating) || 0;
             const starColor = rv >= 4 ? "#fbbf24" : rv >= 3 ? "#fb923c" : "#94a3b8";
             card.innerHTML = `
               <div class="flex items-start justify-between gap-2">
                 <div>
-                  <div class="font-semibold text-white leading-tight">${escHtml(r.name || "Anonymous")}</div>
-                  ${r.service ? `<div class="text-xs text-slate-400 mt-0.5">${escHtml(r.service)}</div>` : ""}
+                  <div class="font-semibold text-white leading-tight">${escHtml(r.Name || "Anonymous")}</div>
+                  ${r.Service ? `<div class="text-xs text-slate-400 mt-0.5">${escHtml(r.Service)}</div>` : ""}
                 </div>
                 <div class="text-xl leading-none shrink-0" style="color:${starColor}">${starsHtml(rv)}</div>
               </div>
-              ${r.text ? `<p class="text-sm text-slate-300 leading-relaxed">${escHtml(r.text)}</p>` : ""}
-              <div class="text-xs text-slate-500 mt-auto">${escHtml(r.date || "")}</div>
+              ${r.Text ? `<p class="text-sm text-slate-300 leading-relaxed">${escHtml(r.Text)}</p>` : ""}
+              <div class="text-xs text-slate-500 mt-auto">${escHtml(r.Date || "")}</div>
             `;
             grid.appendChild(card);
           });
@@ -547,8 +547,8 @@
           const res = await fetch(SHEETDB_URL, {
             method:  "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ data: [{ name, service, rating, text,
-              date: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
+            body: JSON.stringify({ data: [{ Name: name, Service: service, Rating: rating, Text: text,
+              Date: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
             }] })
           });
 
