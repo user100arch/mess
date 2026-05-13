@@ -544,13 +544,19 @@
         btn.textContent = "Submitting…";
 
         try {
-          const res = await fetch(SHEETDB_URL, {
+          const payload = { data: [{ Name: name, Service: service, Rating: String(rating), Text: text,
+            Date: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
+          }] };
+          console.log("Posting to SheetDB:", JSON.stringify(payload));
+
+          const res     = await fetch(SHEETDB_URL, {
             method:  "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ data: [{ Name: name, Service: service, Rating: rating, Text: text,
-              Date: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
-            }] })
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body:    JSON.stringify(payload)
           });
+
+          const responseText = await res.text();
+          console.log("SheetDB response status:", res.status, "body:", responseText);
 
           if (res.ok) {
             document.getElementById("r-name").value    = "";
@@ -563,10 +569,10 @@
             showToast();
             document.getElementById("reviews-grid").scrollIntoView({ behavior: "smooth", block: "nearest" });
           } else {
-            alert("Submission failed. Please try again.");
+            alert("Submission failed (status " + res.status + "): " + responseText);
           }
         } catch (err) {
-          alert("Network error. Please check your connection and try again.");
+          alert("Network error: " + err.message);
           console.error("SheetDB post error:", err);
         } finally {
           btn.disabled    = false;
