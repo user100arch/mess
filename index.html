@@ -39,7 +39,7 @@
       .stars-input:not(:has(label:hover)) input[type="radio"]:checked ~ label,
       .stars-input:not(:has(label:hover)) input[type="radio"]:checked ~ label ~ label { color: #334155; }
       
-      /* simpler fallback: JS sets data-rating on wrapper */
+      /* JS sets data-rating on wrapper for persistent highlighting */
       .stars-input[data-rating="1"] label:nth-child(2) { color: #fbbf24; }
       .stars-input[data-rating="2"] label:nth-child(2),
       .stars-input[data-rating="2"] label:nth-child(4) { color: #fbbf24; }
@@ -51,8 +51,6 @@
       .stars-input[data-rating="4"] label:nth-child(6),
       .stars-input[data-rating="4"] label:nth-child(8) { color: #fbbf24; }
       .stars-input[data-rating="5"] label { color: #fbbf24; }
-
-      .star-filled { color: #fbbf24; }
 
       /* review card fade-in */
       @keyframes fadeUp {
@@ -111,7 +109,7 @@
 
       <div class="flex items-center gap-2">
         <a
-          href="https://wa.me/254748721047?text=Hello%20Mess%20Busters!%20I%20would%20like%20to%20book%20a%20cleaning%20service."
+          href="https://wa.me/254748721047"
           target="_blank" rel="noopener"
           class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-emerald-400 transition"
         >
@@ -143,32 +141,17 @@
               <a href="#contact" class="rounded-xl bg-white text-slate-950 px-5 py-3 font-semibold hover:bg-slate-200 transition text-center">Book a Cleaning</a>
               <a href="#services" class="rounded-xl bg-white/10 border border-white/10 px-5 py-3 font-semibold hover:bg-white/15 transition text-center">View Services</a>
             </div>
-            <div class="mt-6 flex flex-wrap gap-3 text-sm text-slate-300">
-              <span class="px-3 py-2 rounded-xl bg-white/5 border border-white/10">🧽 Kitchens & Bathrooms</span>
-              <span class="px-3 py-2 rounded-xl bg-white/5 border border-white/10">🪟 Windows & Floors</span>
-              <span class="px-3 py-2 rounded-xl bg-white/5 border border-white/10">🚪 Move-in / Move-out</span>
-            </div>
           </div>
 
-          <div class="glass border border-white/10 rounded-3xl p-6 md:p-8">
-            <div class="flex items-center justify-between">
-              <h2 class="text-xl font-bold">Quick Booking</h2>
-              <span class="text-xs text-slate-300">Fast response</span>
-            </div>
+          <div class="glass border border-white/10 rounded-3xl p-6 md:p-8 text-center sm:text-left">
+            <h2 class="text-xl font-bold">Fast response booking</h2>
             <p class="mt-2 text-slate-300 text-sm">Tap WhatsApp for the fastest booking, or use the email/call details below.</p>
             <div class="mt-5 grid gap-3">
               <a class="w-full rounded-2xl bg-emerald-500 text-slate-950 px-5 py-3 font-semibold hover:bg-emerald-400 transition text-center" target="_blank" rel="noopener"
-                href="https://wa.me/254748721047?text=Hello%20Mess%20Busters!%20I%20want%20to%20book%20a%20service.%20My%20location%20is%20____%20and%20my%20preferred%20date%20is%20____.">
+                href="https://wa.me/254748721047?text=Hello%20Mess%20Busters!%20I%20want%20to%20book%20a%20service.">
                 WhatsApp: 0748721047
               </a>
               <a class="w-full rounded-2xl bg-white/10 border border-white/10 px-5 py-3 font-semibold hover:bg-white/15 transition text-center" href="tel:+254748721047">Call/SMS: 0748721047</a>
-              <a class="w-full rounded-2xl bg-white/10 border border-white/10 px-5 py-3 font-semibold hover:bg-white/15 transition text-center"
-                href="mailto:muchirimessbusters@gmail.com?subject=Cleaning%20Booking%20Request&body=Hello%20Mess%20Busters,%0A%0AI%20would%20like%20to%20book%20a%20cleaning%20service.%0A%0AName:%20%0APhone:%20%0ALocation:%20%0AService:%20(Deep/General/Move-In%2FMove-Out)%0APreferred%20Date:%20%0AAdditional%20Notes:%20%0A%0AThank%20you!">
-                Email: muchirimessbusters@gmail.com
-              </a>
-            </div>
-            <div class="mt-6 rounded-2xl bg-white/5 border border-white/10 p-4">
-              <p class="text-sm text-slate-300">Your home re-imagined <span class="text-white/30">•</span> Get the best services ✅ done.</p>
             </div>
           </div>
         </div>
@@ -176,46 +159,22 @@
     </section>
 
     <section id="services" class="mx-auto max-w-6xl px-4 py-14">
-      <div class="flex items-end justify-between gap-6 flex-wrap">
-        <div>
-          <h2 class="text-3xl font-extrabold tracking-tight">Our Services</h2>
-          <p class="mt-2 text-slate-300">Choose the clean that matches your needs.</p>
-        </div>
-        <a href="#contact" class="text-sm font-semibold text-emerald-300 hover:text-emerald-200">Book now →</a>
-      </div>
+      <h2 class="text-3xl font-extrabold tracking-tight">Our Services</h2>
       <div class="mt-8 grid md:grid-cols-3 gap-5">
         <div class="rounded-3xl bg-white/5 border border-white/10 p-6 hover:bg-white/7 transition">
           <div class="text-2xl">🧼</div>
           <h3 class="mt-3 text-xl font-bold">Deep Cleaning</h3>
-          <p class="mt-2 text-sm text-slate-300 leading-relaxed">Thorough washing of dishes, scrubbing bathrooms and toilets, disinfecting kitchen surfaces, mopping floors, cleaning windows, and reaching those hard-to-clean corners.</p>
-          <div class="mt-5">
-            <a class="inline-flex items-center justify-center rounded-xl bg-white text-slate-950 px-4 py-2 text-sm font-semibold hover:bg-slate-200 transition" target="_blank" rel="noopener"
-              href="https://wa.me/254748721047?text=Hello%20Mess%20Busters!%20I%20want%20to%20book%20Deep%20Cleaning.%20My%20location%20is%20____%20and%20date%20is%20____.">
-              Book Deep Cleaning
-            </a>
-          </div>
+          <p class="mt-2 text-sm text-slate-300 leading-relaxed">Thorough washing of dishes, scrubbing bathrooms, kitchen surfaces, mopping floors, and cleaning windows.</p>
         </div>
         <div class="rounded-3xl bg-white/5 border border-white/10 p-6 hover:bg-white/7 transition">
           <div class="text-2xl">🧹</div>
           <h3 class="mt-3 text-xl font-bold">General Cleaning</h3>
-          <p class="mt-2 text-sm text-slate-300 leading-relaxed">Routine dusting, vacuuming carpets, mopping floors, tidying up rooms, and maintaining a fresh living space.</p>
-          <div class="mt-5">
-            <a class="inline-flex items-center justify-center rounded-xl bg-white text-slate-950 px-4 py-2 text-sm font-semibold hover:bg-slate-200 transition" target="_blank" rel="noopener"
-              href="https://wa.me/254748721047?text=Hello%20Mess%20Busters!%20I%20want%20to%20book%20General%20Cleaning.%20My%20location%20is%20____%20and%20date%20is%20____.">
-              Book General Cleaning
-            </a>
-          </div>
+          <p class="mt-2 text-sm text-slate-300 leading-relaxed">Routine dusting, vacuuming carpets, mopping floors, and maintaining a fresh living space.</p>
         </div>
         <div class="rounded-3xl bg-white/5 border border-white/10 p-6 hover:bg-white/7 transition">
           <div class="text-2xl">🚚</div>
           <h3 class="mt-3 text-xl font-bold">Move-In / Move-Out</h3>
-          <p class="mt-2 text-sm text-slate-300 leading-relaxed">Comprehensive cleaning to prepare homes for new occupants, including all rooms, appliances, fixtures, and thorough sanitization.</p>
-          <div class="mt-5">
-            <a class="inline-flex items-center justify-center rounded-xl bg-white text-slate-950 px-4 py-2 text-sm font-semibold hover:bg-slate-200 transition" target="_blank" rel="noopener"
-              href="https://wa.me/254748721047?text=Hello%20Mess%20Busters!%20I%20want%20to%20book%20Move-In/Move-Out%20Cleaning.%20My%20location%20is%20____%20and%20date%20is%20____.">
-              Book Move Cleaning
-            </a>
-          </div>
+          <p class="mt-2 text-sm text-slate-300 leading-relaxed">Comprehensive cleaning to prepare homes for new occupants, including all rooms and sanitization.</p>
         </div>
       </div>
     </section>
@@ -232,68 +191,44 @@
           <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
             <div class="text-xl">🧴</div>
             <div class="mt-2 font-semibold text-white">Thorough & Hygienic</div>
-            <div class="mt-1 text-sm">We disinfect key surfaces and reach corners that are usually ignored.</div>
+            <div class="mt-1 text-sm">We disinfect key surfaces and reach corners usually ignored.</div>
           </div>
           <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
             <div class="text-xl">🤝</div>
             <div class="mt-2 font-semibold text-white">Reliable service</div>
-            <div class="mt-1 text-sm">Clear communication, professional attitude, and consistent results.</div>
+            <div class="mt-1 text-sm">Clear communication and consistent professional results.</div>
           </div>
         </div>
       </div>
     </section>
 
     <section id="pricing" class="mx-auto max-w-6xl px-4 pb-14">
-      <div class="flex items-end justify-between gap-6 flex-wrap">
-        <div>
-          <h2 class="text-3xl font-extrabold tracking-tight">Pricing</h2>
-          <p class="mt-2 text-slate-300">Pricing depends on house size, condition, and service type. Request a quick quote on WhatsApp.</p>
-        </div>
-        <a class="rounded-xl bg-emerald-500 text-slate-950 px-4 py-2 text-sm font-semibold hover:bg-emerald-400 transition" target="_blank" rel="noopener"
-          href="https://wa.me/254748721047?text=Hello%20Mess%20Busters!%20Please%20share%20a%20quote%20for%20(Deep/General/Move)%20Cleaning.%20House%20size:%20__%20Bedrooms.%20Location:%20__.%20Preferred%20date:%20__.">
-          Get a Quote
-        </a>
-      </div>
+      <h2 class="text-3xl font-extrabold tracking-tight">Pricing</h2>
+      <p class="mt-2 text-slate-300">Request a quick quote on WhatsApp based on your home size.</p>
       <div class="mt-6 grid md:grid-cols-3 gap-5">
         <div class="rounded-3xl bg-white/5 border border-white/10 p-6">
-          <div class="text-slate-300 text-sm">General Cleaning</div>
+          <div class="text-slate-300 text-sm font-semibold">General Cleaning</div>
           <div class="mt-2 text-2xl font-extrabold">Quote-based</div>
-          <ul class="mt-4 space-y-2 text-sm text-slate-300">
-            <li>• Dusting & tidying</li>
-            <li>• Vacuum & mop</li>
-            <li>• Fresh living space</li>
-          </ul>
         </div>
         <div class="rounded-3xl bg-white/5 border border-white/10 p-6 ring-1 ring-emerald-500/30">
-          <div class="text-emerald-300 text-sm font-semibold">Most requested</div>
-          <div class="mt-2 text-2xl font-extrabold">Deep Cleaning</div>
-          <ul class="mt-4 space-y-2 text-sm text-slate-300">
-            <li>• Bathrooms & toilets</li>
-            <li>• Kitchen disinfecting</li>
-            <li>• Windows & corners</li>
-          </ul>
+          <div class="text-emerald-300 text-sm font-semibold">Deep Cleaning</div>
+          <div class="mt-2 text-2xl font-extrabold">Quote-based</div>
         </div>
         <div class="rounded-3xl bg-white/5 border border-white/10 p-6">
-          <div class="text-slate-300 text-sm">Move-In/Move-Out</div>
+          <div class="text-slate-300 text-sm font-semibold">Move-In / Move-Out</div>
           <div class="mt-2 text-2xl font-extrabold">Quote-based</div>
-          <ul class="mt-4 space-y-2 text-sm text-slate-300">
-            <li>• All rooms cleaned</li>
-            <li>• Fixtures & appliances</li>
-            <li>• Thorough sanitization</li>
-          </ul>
         </div>
       </div>
     </section>
 
     <section id="reviews" class="mx-auto max-w-6xl px-4 pb-14">
       <div class="rounded-3xl bg-white/5 border border-white/10 p-8">
-
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <h2 class="text-3xl font-extrabold tracking-tight">Customer Reviews</h2>
-            <p class="mt-1 text-slate-300 text-sm">Hear what our clients say — and leave your own review below.</p>
+            <p class="mt-1 text-slate-300 text-sm">Direct feedback from our recent clients.</p>
           </div>
-          <div id="avg-badge" class="hidden flex-col items-center justify-center rounded-2xl bg-emerald-500/10 border border-emerald-500/20 px-6 py-4 text-center min-w-[120px]">
+          <div id="avg-badge" class="hidden flex-col items-center justify-center rounded-2xl bg-emerald-500/10 border border-emerald-500/20 px-6 py-4 text-center">
             <div id="avg-score" class="text-4xl font-extrabold text-emerald-300">5.0</div>
             <div id="avg-stars" class="text-xl mt-0.5">⭐⭐⭐⭐⭐</div>
             <div id="avg-count" class="text-xs text-slate-400 mt-1">0 reviews</div>
@@ -301,287 +236,175 @@
         </div>
 
         <div id="reviews-grid" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-
-        <div id="empty-state" class="mt-8 rounded-2xl bg-white/5 border border-white/10 p-8 text-center text-slate-400">
-          <div class="text-3xl">🧹</div>
-          <p class="mt-2 text-sm">No reviews yet. Be the first to share your experience!</p>
-        </div>
+        <div id="empty-state" class="mt-8 text-center text-slate-400">Loading reviews...</div>
 
         <div class="mt-10 rounded-2xl bg-white/5 border border-white/10 p-6">
           <h3 class="text-xl font-bold">Leave a Review</h3>
-          <p class="mt-1 text-sm text-slate-300">Had a cleaning done? We'd love to hear your feedback.</p>
-
           <div class="mt-6 grid gap-4">
-
+            <input id="r-name" class="w-full rounded-xl bg-slate-900/60 border border-white/10 px-4 py-3 outline-none focus:border-emerald-400" placeholder="Your Name" />
+            
             <div>
-              <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider" for="r-name">Your Name</label>
-              <input
-                id="r-name"
-                class="mt-1 w-full rounded-xl bg-slate-900/60 border border-white/10 px-4 py-3 outline-none focus:border-emerald-400 transition"
-                placeholder="e.g. Jane W."
-              />
-            </div>
-
-            <div>
-              <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider" for="r-service">Service Used</label>
-              <select
-                id="r-service"
-                class="mt-1 w-full rounded-xl bg-slate-900/60 border border-white/10 px-4 py-3 outline-none focus:border-emerald-400 transition"
-              >
-                <option value="">Select a service (optional)</option>
-                <option>Deep Cleaning</option>
-                <option>General Cleaning</option>
-                <option>Move-In/Move-Out Cleaning</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Your Rating</label>
-              <div class="mt-2">
-                <div class="stars-input" id="star-picker" data-rating="0" role="radiogroup" aria-label="Star rating">
-                  <input type="radio" id="s5" name="rating" value="5" />
-                  <label for="s5" title="5 stars" aria-label="5 stars">★</label>
-                  <input type="radio" id="s4" name="rating" value="4" />
-                  <label for="s4" title="4 stars" aria-label="4 stars">★</label>
-                  <input type="radio" id="s3" name="rating" value="3" />
-                  <label for="s3" title="3 stars" aria-label="3 stars">★</label>
-                  <input type="radio" id="s2" name="rating" value="2" />
-                  <label for="s2" title="2 stars" aria-label="2 stars">★</label>
-                  <input type="radio" id="s1" name="rating" value="1" />
-                  <label for="s1" title="1 star" aria-label="1 star">★</label>
-                </div>
-                <p id="star-hint" class="mt-1 text-xs text-slate-500">Click to select a rating</p>
+              <label class="text-xs font-semibold text-slate-400 uppercase">Your Rating</label>
+              <div class="stars-input mt-2" id="star-picker" data-rating="0">
+                <input type="radio" id="s5" name="rating" value="5" /><label for="s5">★</label>
+                <input type="radio" id="s4" name="rating" value="4" /><label for="s4">★</label>
+                <input type="radio" id="s3" name="rating" value="3" /><label for="s3">★</label>
+                <input type="radio" id="s2" name="rating" value="2" /><label for="s2">★</label>
+                <input type="radio" id="s1" name="rating" value="1" /><label for="s1">★</label>
               </div>
             </div>
 
-            <div>
-              <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider" for="r-text">Your Review</label>
-              <textarea
-                id="r-text"
-                class="mt-1 w-full rounded-xl bg-slate-900/60 border border-white/10 px-4 py-3 outline-none focus:border-emerald-400 transition min-h-[110px] resize-none"
-                placeholder="Tell others about your experience…"
-              ></textarea>
-            </div>
-
-            <button
-              id="submit-review"
-              onclick="submitReview()"
-              class="rounded-xl bg-emerald-500 text-slate-950 px-5 py-3 font-semibold hover:bg-emerald-400 transition disabled:opacity-50 disabled:cursor-not-allowed"
-            >
+            <textarea id="r-text" class="w-full rounded-xl bg-slate-900/60 border border-white/10 px-4 py-3 outline-none focus:border-emerald-400 min-h-[100px]" placeholder="Tell us about your experience..."></textarea>
+            
+            <button id="submit-review" onclick="submitReview()" class="rounded-xl bg-emerald-500 text-slate-950 px-5 py-3 font-semibold hover:bg-emerald-400 transition disabled:opacity-50">
               Submit Review
             </button>
           </div>
         </div>
-
       </div>
     </section>
+
     <section id="contact" class="mx-auto max-w-6xl px-4 pb-16">
       <div class="rounded-3xl bg-white/5 border border-white/10 p-8">
         <h2 class="text-3xl font-extrabold tracking-tight">For Bookings</h2>
-        <p class="mt-2 text-slate-300">Reach us via WhatsApp, call/SMS, or email. We respond fast.</p>
-
         <div class="mt-6 grid md:grid-cols-2 gap-6">
           <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
-            <div class="text-sm text-slate-300">Call / SMS / WhatsApp</div>
-            <div class="mt-2 text-2xl font-extrabold">
-              <a class="hover:underline" href="tel:+254748721047">0748721047</a>
-            </div>
-            <div class="mt-5 flex flex-col sm:flex-row gap-3">
-              <a class="rounded-xl bg-emerald-500 text-slate-950 px-4 py-2 font-semibold hover:bg-emerald-400 transition text-center" target="_blank" rel="noopener" href="https://wa.me/254748721047">WhatsApp</a>
-              <a class="rounded-xl bg-white text-slate-950 px-4 py-2 font-semibold hover:bg-slate-200 transition text-center" href="tel:+254748721047">Call now</a>
-            </div>
-            <div class="mt-6 text-sm text-slate-300">
-              <span class="font-semibold text-white">Email:</span>
-              <a class="hover:underline" href="mailto:muchirimessbusters@gmail.com">muchirimessbusters@gmail.com</a>
+            <div class="text-sm text-slate-300 uppercase font-bold tracking-widest">Direct Contact</div>
+            <div class="mt-4 text-2xl font-extrabold"><a class="hover:underline" href="tel:+254748721047">0748721047</a></div>
+            <div class="mt-4 text-sm text-slate-300">Email: muchirimessbusters@gmail.com</div>
+            <div class="mt-6 flex flex-col sm:flex-row gap-3">
+              <a class="rounded-xl bg-emerald-500 text-slate-950 px-4 py-2 font-semibold text-center" href="https://wa.me/254748721047">WhatsApp</a>
+              <a class="rounded-xl bg-white text-slate-950 px-4 py-2 font-semibold text-center" href="tel:+254748721047">Call Now</a>
             </div>
           </div>
 
           <form class="rounded-2xl bg-white/5 border border-white/10 p-6" onsubmit="return handleSubmit(event)">
-            <div class="text-sm text-slate-300">Quick message (opens WhatsApp)</div>
-            <div class="mt-4 grid gap-3">
-              <input class="w-full rounded-xl bg-slate-900/60 border border-white/10 px-4 py-3 outline-none focus:border-emerald-400" placeholder="Your name" id="name" required />
-              <input class="w-full rounded-xl bg-slate-900/60 border border-white/10 px-4 py-3 outline-none focus:border-emerald-400" placeholder="Location (e.g., Nairobi)" id="location" required />
-              <select class="w-full rounded-xl bg-slate-900/60 border border-white/10 px-4 py-3 outline-none focus:border-emerald-400" id="service" required>
-                <option value="" disabled selected>Select service</option>
+            <div class="text-sm text-slate-300 mb-4">Quick Request</div>
+            <div class="grid gap-3">
+              <input class="w-full rounded-xl bg-slate-900/60 border border-white/10 px-4 py-3" placeholder="Name" id="name" required />
+              <input class="w-full rounded-xl bg-slate-900/60 border border-white/10 px-4 py-3" placeholder="Location" id="location" required />
+              <select class="w-full rounded-xl bg-slate-900/60 border border-white/10 px-4 py-3" id="service" required>
+                <option value="">Select Service</option>
                 <option>Deep Cleaning</option>
                 <option>General Cleaning</option>
-                <option>Move-In/Move-Out Cleaning</option>
+                <option>Move-In/Out</option>
               </select>
-              <input class="w-full rounded-xl bg-slate-900/60 border border-white/10 px-4 py-3 outline-none focus:border-emerald-400" placeholder="Preferred date (e.g., Saturday)" id="date" />
-              <textarea class="w-full rounded-xl bg-slate-900/60 border border-white/10 px-4 py-3 outline-none focus:border-emerald-400 min-h-[110px]" placeholder="Extra notes (optional)" id="notes"></textarea>
-              <button class="rounded-xl bg-white text-slate-950 px-4 py-3 font-semibold hover:bg-slate-200 transition" type="submit">Send on WhatsApp</button>
-              <p class="text-xs text-slate-400">This form doesn't store data — it just formats your message and opens WhatsApp.</p>
+              <button class="rounded-xl bg-white text-slate-950 px-4 py-3 font-semibold" type="submit">Send WhatsApp</button>
             </div>
           </form>
         </div>
-
-        <div class="mt-8 text-center text-slate-300">
-          <p class="text-sm">Let <span class="font-semibold text-white"> Mess Busters</span> transform your home into a spotless sanctuary!</p>
-          <p class="mt-1 text-xs text-slate-400">© <span id="year"></span> Mess Busters. All rights reserved.</p>
-        </div>
+        <p class="mt-10 text-center text-xs text-slate-500">© <span id="year"></span> Mess Busters. All rights reserved.</p>
       </div>
     </section>
 
-    <div id="toast">✅ Review submitted — thank you!</div>
+    <div id="toast">✅ Review submitted successfully!</div>
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      /* ── WhatsApp booking form ── */
-      function handleSubmit(e) {
-        e.preventDefault();
-        const name     = document.getElementById("name").value.trim();
-        const location = document.getElementById("location").value.trim();
-        const service  = document.getElementById("service").value;
-        const date     = document.getElementById("date").value.trim();
-        const notes    = document.getElementById("notes").value.trim();
-        const msg =
-          `Hello Mess Busters!%0A%0A` +
-          `Name: ${encodeURIComponent(name)}%0A` +
-          `Location: ${encodeURIComponent(location)}%0A` +
-          `Service: ${encodeURIComponent(service)}%0A` +
-          (date  ? `Preferred date: ${encodeURIComponent(date)}%0A`  : "") +
-          (notes ? `%0ANotes: ${encodeURIComponent(notes)}%0A`       : "");
-        window.open(`https://wa.me/254748721047?text=${msg}`, "_blank");
-        return false;
-      }
-
-      /* ══════════════════════════════════════════════
-          ── REVIEWS ENGINE ──
-      ══════════════════════════════════════════════ */
-      const STORAGE_KEY = "messbusters_reviews";
-      const STAR_LABELS = ["", "😕 Poor", "😐 Fair", "🙂 Good", "😊 Great", "🤩 Excellent!"];
-
-      /* ── Star picker (RTL trick: highest value first, reversed with flex-row-reverse via JS) ── */
-      const picker = document.getElementById("star-picker");
-      // Reverse the star order so left = highest visually, but inputs stay 5→1
-      // We display them in reverse via CSS flex-direction
-      picker.style.flexDirection = "row-reverse";
-      picker.style.justifyContent = "flex-end";
+      // --- CONFIG ---
+      const SHEETDB_URL = "https://sheetdb.io/api/v1/uzi6rblq0uv3c";
 
       let selectedRating = 0;
+      const picker = document.getElementById("star-picker");
+      picker.style.flexDirection = "row-reverse";
+      picker.style.justifyContent = "flex-end";
 
       picker.addEventListener("click", function(e) {
         const label = e.target.closest("label");
         if (!label) return;
-        const input = document.getElementById(label.htmlFor);
-        if (!input) return;
-        selectedRating = parseInt(input.value);
+        selectedRating = parseInt(document.getElementById(label.htmlFor).value);
         picker.dataset.rating = selectedRating;
-        document.getElementById("star-hint").textContent = STAR_LABELS[selectedRating] || "";
       });
 
-      /* ── Local storage helpers ── */
-      function loadReviews() {
-        try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
-        catch { return []; }
-      }
-      function saveReviews(arr) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
-      }
+      function starsHtml(n) { return "★".repeat(n) + "☆".repeat(5 - n); }
 
-      /* ── Render star string ── */
-      function starsHtml(n) {
-        return "★".repeat(n) + "☆".repeat(5 - n);
-      }
+      async function renderReviews() {
+        const grid = document.getElementById("reviews-grid");
+        const empty = document.getElementById("empty-state");
+        const badge = document.getElementById("avg-badge");
 
-      /* ── Render all reviews ── */
-      function renderReviews() {
-        const reviews = loadReviews();
-        const grid    = document.getElementById("reviews-grid");
-        const empty   = document.getElementById("empty-state");
-        const badge   = document.getElementById("avg-badge");
-        grid.innerHTML = "";
+        try {
+          const response = await fetch(SHEETDB_URL);
+          const reviews = await response.json();
+          grid.innerHTML = "";
 
-        if (reviews.length === 0) {
-          empty.classList.remove("hidden");
-          badge.classList.add("hidden");
-          return;
-        }
+          if (!reviews || reviews.length === 0) {
+            empty.textContent = "No reviews yet. Be the first!";
+            return;
+          }
 
-        empty.classList.add("hidden");
-        badge.classList.remove("hidden");
-        badge.classList.add("flex");
+          empty.classList.add("hidden");
+          badge.classList.remove("hidden");
+          badge.classList.add("flex");
 
-        // Average
-        const avg = reviews.reduce((s, r) => s + r.rating, 0) / reviews.length;
-        document.getElementById("avg-score").textContent = avg.toFixed(1);
-        document.getElementById("avg-stars").textContent = starsHtml(Math.round(avg));
-        document.getElementById("avg-count").textContent = `${reviews.length} review${reviews.length !== 1 ? "s" : ""}`;
+          const avg = reviews.reduce((s, r) => s + parseInt(r.rating || 0), 0) / reviews.length;
+          document.getElementById("avg-score").textContent = avg.toFixed(1);
+          document.getElementById("avg-stars").textContent = starsHtml(Math.round(avg));
+          document.getElementById("avg-count").textContent = `${reviews.length} reviews`;
 
-        // Cards (newest first)
-        [...reviews].reverse().forEach((r, i) => {
-          const card = document.createElement("div");
-          card.className = "review-card rounded-2xl bg-white/5 border border-white/10 p-5 flex flex-col gap-3";
-          card.style.animationDelay = `${i * 0.05}s`;
-
-          const starColor = r.rating >= 4 ? "#fbbf24" : r.rating >= 3 ? "#fb923c" : "#94a3b8";
-
-          card.innerHTML = `
-            <div class="flex items-start justify-between gap-2">
-              <div>
-                <div class="font-semibold text-white leading-tight">${escHtml(r.name || "Anonymous")}</div>
-                ${r.service ? `<div class="text-xs text-slate-400 mt-0.5">${escHtml(r.service)}</div>` : ""}
-              </div>
-              <div class="text-xl leading-none shrink-0" style="color:${starColor}">${starsHtml(r.rating)}</div>
-            </div>
-            ${r.text ? `<p class="text-sm text-slate-300 leading-relaxed">${escHtml(r.text)}</p>` : ""}
-            <div class="text-xs text-slate-500 mt-auto">${r.date}</div>
-          `;
-          grid.appendChild(card);
-        });
+          reviews.reverse().forEach((r, i) => {
+            const card = document.createElement("div");
+            card.className = "review-card rounded-2xl bg-white/5 border border-white/10 p-5 flex flex-col gap-2";
+            card.innerHTML = `
+              <div class="flex justify-between items-center"><span class="font-bold">${r.name}</span><span class="text-yellow-400">${starsHtml(parseInt(r.rating))}</span></div>
+              <p class="text-sm text-slate-300">${r.text}</p>
+              <span class="text-[10px] text-slate-500 mt-2">${r.date}</span>
+            `;
+            grid.appendChild(card);
+          });
+        } catch (e) { console.error("Failed to load reviews", e); }
       }
 
-      /* ── Submit a review ── */
-      function submitReview() {
-        const name    = document.getElementById("r-name").value.trim();
-        const service = document.getElementById("r-service").value;
-        const text    = document.getElementById("r-text").value.trim();
-        const rating  = selectedRating;
+      async function submitReview() {
+        const btn = document.getElementById("submit-review");
+        const name = document.getElementById("r-name").value.trim();
+        const text = document.getElementById("r-text").value.trim();
 
-        if (!name) { alert("Please enter your name."); return; }
-        if (!rating) { alert("Please select a star rating."); return; }
-        if (!text)   { alert("Please write a short review."); return; }
+        if (!name || !selectedRating || !text) return alert("Please complete all review fields");
 
-        const reviews = loadReviews();
-        reviews.push({
-          name,
-          service,
-          text,
-          rating,
-          date: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
-        });
-        saveReviews(reviews);
+        btn.disabled = true;
+        btn.textContent = "Posting...";
 
-        // Reset form
-        document.getElementById("r-name").value = "";
-        document.getElementById("r-service").value = "";
-        document.getElementById("r-text").value = "";
-        selectedRating = 0;
-        picker.dataset.rating = 0;
-        document.getElementById("star-hint").textContent = "Click to select a rating";
-        document.querySelectorAll(".stars-input input[type='radio']").forEach(i => i.checked = false);
+        const payload = {
+          data: [{
+            name,
+            rating: selectedRating,
+            text,
+            date: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
+          }]
+        };
 
-        renderReviews();
-        showToast();
-
-        // Scroll to reviews grid
-        document.getElementById("reviews-grid").scrollIntoView({ behavior: "smooth", block: "nearest" });
+        try {
+          const res = await fetch(SHEETDB_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (res.ok) {
+            document.getElementById("r-name").value = "";
+            document.getElementById("r-text").value = "";
+            selectedRating = 0;
+            picker.dataset.rating = 0;
+            const t = document.getElementById("toast");
+            t.classList.add("show");
+            setTimeout(() => t.classList.remove("show"), 3000);
+            renderReviews();
+          }
+        } catch (e) { alert("Submission failed. Try again."); }
+        finally { btn.disabled = false; btn.textContent = "Submit Review"; }
       }
 
-      /* ── Toast ── */
-      function showToast() {
-        const t = document.getElementById("toast");
-        t.classList.add("show");
-        setTimeout(() => t.classList.remove("show"), 3000);
+      function handleSubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        const loc = document.getElementById("location").value;
+        const srv = document.getElementById("service").value;
+        const msg = `Hello Mess Busters! I'm ${name} from ${loc} interested in ${srv}.`;
+        window.open(`https://wa.me/254748721047?text=${encodeURIComponent(msg)}`, "_blank");
+        return false;
       }
 
-      /* ── HTML escape ── */
-      function escHtml(s) {
-        return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-      }
-
-      /* ── Init ── */
       renderReviews();
     </script>
   </body>
